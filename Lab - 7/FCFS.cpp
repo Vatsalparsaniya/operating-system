@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//#include<stdio.h>
+
 using namespace std;
 
 void swap(int *a, int *b)
@@ -34,7 +34,6 @@ void sort_array(int a[], int b[], int Pid[], int n)
 	}	
 }
 
-//void calculate_time(int[] Pid, int[] at, int[] bt, int[] ct, int[] tat
 
 int main()
 {	
