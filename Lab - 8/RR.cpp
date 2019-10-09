@@ -25,12 +25,13 @@ int main(){
     cout<<"Enter Number Of Process : ";
     cin>>n;
 
-    int at[n],bt[n],ct[n],tat[n],wt[n],rt[n],pid[n],btc[n];
+    int at[n],bt[n],ct[n],tat[n],wt[n],rt[n],pid[n],btc[n],pidc[n];
     int time_quantom;
 
     for(int i=0 ; i<n ; i++){
             cout<<"For Process ID = "<<i<<endl;
             pid[i]=i;
+            pidc[i]=i;
             cout<<"Arival time :";
             cin>>at[i];
             cout<<"Burst Time :";
@@ -48,23 +49,37 @@ int main(){
                 swap(bt[j],bt[j+1]);
                 swap(btc[j],btc[j+1]);
                 swap(pid[j],pid[j+1]);
+                swap(pidc[j],pidc[j+1]);
             }
         }
     }
+    for(int i=0 ; i<n ; i++){
+            pid[i]=i;
+            at[i]=at[i];
+            bt[i]=bt[i];
+            btc[i]=bt[i];
+    }
+    cout<<endl<<"Pid\tAT\tBT"<<endl;
 
+	for(int i=0; i<n; i++){
+		cout<<pid[i]<<"\t"<<at[i]<<"\t"<<btc[i]<<endl;
+	}	
     for(int i=0;i<n;i++){
         Process_queue.push_back(pid[i]);
     }
-    int first_process = Process_queue.front();
+    // int first_process = pid[0];
+    // cout<<"First Process =  "<<first_process<<endl;
     int current_cpu_process;
-    int cpu_time = at[first_process];
+    int cpu_time = at[0];
 
     cout<<"check_1"<<endl;
     
-    while(true){
+    
+    int i=20;
+    while(i--){
         cout<<"check-2"<<endl;
         bool completion_flag = false;
-        
+        cout<<cpu_time<<endl;
         if(cpu_queue.size() != 0){
             // cpu_queue is not empty
             current_cpu_process = cpu_queue.front();
@@ -95,10 +110,14 @@ int main(){
                 cpu_time += time_quantom;
                 // Process needs more cpu 
             }
-        }else if(cpu_queue.size() == 0 && cpu_time != at[first_process]){
+        }else if(cpu_queue.size() == 0 && cpu_time != at[0]){
             // cpu_queue is empty
             cout<<"check-2.5"<<endl;
             cpu_time += 1;
+        }else if(cpu_queue.size() == 0 && cpu_time == at[0]){
+
+            cpu_queue.push_back(Process_queue.front());
+            Process_queue.erase(Process_queue.begin());
         }
 
         cout<<"check-3"<<endl;
@@ -106,7 +125,7 @@ int main(){
             // cpu_time is less then arrival time of last process and 
             // there is process in process_queue
             cout<<"check-3.1"<<endl;
-            while(at[Process_queue.front()] <= cpu_time && Process_queue.size() != 0){
+            while(at[Process_queue[0]] <= cpu_time && Process_queue.size() != 0){
                 cout<<"check-3.2 for process : "<<Process_queue.front()<<endl;
                 cpu_queue.push_back(pid[Process_queue.front()]);
                 Process_queue.erase(Process_queue.begin());
@@ -134,7 +153,7 @@ int main(){
     cout<<endl<<"Pid\tAT\tBT\tCT\tTAT\tWT\tRT"<<endl;
 
 	for(int i=0; i<n; i++){
-		cout<<pid[i]<<"\t"<<at[i]<<"\t"<<btc[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<"\t"<<rt[i]<<endl;
+		cout<<pidc[i]<<"\t"<<at[i]<<"\t"<<btc[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<"\t"<<rt[i]<<endl;
 	}	
 	cout<<endl<<"Average Turn Around Time = "<<calculate_average(tat,n);
 	cout<<endl<<"Waiting Time = "<<calculate_average(wt,n)<<endl;
