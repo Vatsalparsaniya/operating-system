@@ -2,11 +2,11 @@
 
 ## Example
 
-![](images/EX_1.png)
+![](Images/EX_1.png)
 
-![](images/EX_2.png)
+![](Images/EX_2.png)
 
 ## CMD Output
 
-![CMD](images/RR_CMD.png)
+![CMD](Images/RR_CMD.png)
 
