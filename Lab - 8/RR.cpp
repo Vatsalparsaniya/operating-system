@@ -127,13 +127,12 @@ int main(){
 	}
 	for(int i=0; i<n; i++){
 		wt[i] = tat[i] - btc[i];
-		rt[i] = tat[i] - btc[i];
 	}
     cout<<endl;
-    cout<<endl<<"Pid\tAT\tBT\tCT\tTAT\tWT\tRT"<<endl;
+    cout<<endl<<"Pid\tAT\tBT\tCT\tTAT\tWT"<<endl;
 
 	for(int i=0; i<n; i++){
-		cout<<pidc[i]<<"\t"<<at[i]<<"\t"<<btc[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<"\t"<<rt[i]<<endl;
+		cout<<pidc[i]<<"\t"<<at[i]<<"\t"<<btc[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<endl;
 	}	
 	cout<<endl<<"Average Turn Around Time = "<<calculate_average(tat,n);
 	cout<<endl<<"Waiting Time = "<<calculate_average(wt,n)<<endl;
