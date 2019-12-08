@@ -2,7 +2,7 @@
 echo -n "Enter Number : " 
 read N 
 num=$N 
-c='' 
+c=
 while [ $N -ne 0 ] 
 do 
     ll=$((N%10)) 
@@ -14,4 +14,4 @@ then 
     echo "yes" 
 else 
     echo "No" 
-fi 
+fi

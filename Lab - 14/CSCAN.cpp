@@ -46,7 +46,7 @@ int main(){
     // cout<<endl;
     int first = head_index;
     int second;
-    for(int i=0;i<N+1;i++){
+    for(int i=0;i<N+2;i++){
         second = (first +1)%(N+2);
         answer += abs(page_Refrence[first]-page_Refrence[second]);
         cout<<"("<<page_Refrence[first]<<"-"<<page_Refrence[second]<<") - ";
